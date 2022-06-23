@@ -1,0 +1,8 @@
+---
+- name: configure-virtual-machines-playbook
+  hosts: all
+  become: yes
+  gather_facts: yes
+  tasks:
+   - name: update all packages
+     shell: ls -la /root
