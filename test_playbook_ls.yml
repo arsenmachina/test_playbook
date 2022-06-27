@@ -1,8 +1,26 @@
 ---
-- name: configure-virtual-machines-playbook
+- name: test
   hosts: all
   become: yes
   gather_facts: yes
+
   tasks:
-   - name: update all packages
-     shell: ls -la /root
+
+
+   - name: clone_repo
+     ansible.builtin.git:
+       repo: https://github.com/aukustik/minecraft-docker.git
+       dest: /home/admin/minecraft
+
+   - name: change .ENV file
+     ansible.builtin.lineinfile:
+       path: /home/admin/minecraft/.env
+       regexp: '^WORK_DIR='
+       line: WORK_DIR="{{WORK_DIR}}"
+
+
+
+  
+
+
+    
