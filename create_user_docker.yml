@@ -22,4 +22,4 @@
 
 
     - name: Add docker to Docker group
-      shell: "usermod -aG docker docker"
+      shell: "sudo usermod -aG docker docker"
