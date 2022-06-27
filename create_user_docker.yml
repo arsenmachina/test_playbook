@@ -14,7 +14,7 @@
         path: /etc/sudoers.d/docker
         state: touch
 
-    - name: Give rke user passwordless sudo
+    - name: Give docker user passwordless sudo
       lineinfile:
         path: /etc/sudoers.d/docker
         state: present
