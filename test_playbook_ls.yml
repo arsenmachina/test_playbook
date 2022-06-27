@@ -16,7 +16,7 @@
      ansible.builtin.lineinfile:
        path: /home/admin/minecraft/.env
        regexp: '^WORK_DIR='
-       line: WORK_DIR="{{WORK_DIR}}"
+       line: WORK_DIR={{WORK_DIR}}
 
 
 
