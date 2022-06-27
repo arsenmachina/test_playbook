@@ -1,7 +1,7 @@
 ---
 - name: test
   hosts: all
-  become_user: 
+  become_user: admin
   gather_facts: yes
 
   tasks:
