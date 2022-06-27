@@ -2,6 +2,7 @@
 - name: Create docker user with passwordless sudo
   hosts: all
   become: yes
+  become_method: sudo
   tasks:
     - name: Add docker user
       user:
