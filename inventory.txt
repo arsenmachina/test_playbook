@@ -1,13 +1,13 @@
 
 [workMachine]
 
-work_machine_127 ansible_host=192.168.1.127
+work_machine_125 ansible_host=192.168.1.125
 
 [workMachine:vars]
 
-ansible_ssh_pass=admin
-ansible_user=admin
-ansible_sudo_pass=admin
+ansible_ssh_pass=1
+ansible_user=usrv
+ansible_sudo_pass=1
 
 
 

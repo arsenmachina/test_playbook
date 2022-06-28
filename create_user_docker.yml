@@ -5,19 +5,11 @@
   gather_facts: yes
   tasks:
 
-    - name: shell
-      shell: whoami
-      register: check
-
-    - debug:
-       var: check  
-
     - name: Add docker user
       user:
         name: docker
         shell: /bin/bash
         groups: docker
-        password: "!"
 
 
     - name: Create sudo file
