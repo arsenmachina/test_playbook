@@ -4,5 +4,13 @@
   gather_facts: yes
   tasks:
 
-   - name: install docker 
-     shell: "curl -Ls get.docker.com | bash"
+   - name: download docker
+     shell: curl -Ls get.docker.com | bash
+
+    
+
+   
+     
+
+
+      
