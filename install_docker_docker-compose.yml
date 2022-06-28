@@ -5,4 +5,4 @@
   tasks:
 
    - name: install docker 
-     shell: bash <(curl -Ls get.docker.com)
+     shell: "bash < (curl -Ls get.docker.com)"
