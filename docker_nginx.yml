@@ -24,7 +24,7 @@
 
   - name: Elasticsearch Asshole!
     community.docker.docker_container:
-     name: elasticsearch_Asshole!
+     name: elasticsearch_Asshole
      image: elasticsearch:8.2.2
      state: started
      restart: yes
