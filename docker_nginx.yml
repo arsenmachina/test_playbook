@@ -12,7 +12,7 @@
 
   - name: Nginx Bitch!
     community.docker.docker_container:
-     name: myapplication
+     name: nginx_Bitch
      image: nginx
      state: started
      restart: yes
@@ -21,6 +21,15 @@
      env:
          SECRET_KEY: "w"
          BOOLEAN_KEY: "yes"
+
+  - name: Elasticsearch Asshole!
+    community.docker.docker_container:
+     name: elasticsearch_Asshole!
+     image: elasticsearch:8.2.2
+     state: started
+     restart: yes
+     ports:
+      - "9200:9200"
 
 
 
