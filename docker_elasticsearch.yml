@@ -1,0 +1,21 @@
+---
+- name: test
+  hosts: all
+  become: yes
+  become_user: docker
+  gather_facts: yes
+
+  tasks:
+
+
+  
+
+  - name: Elasticsearch Bitch!
+    community.docker.docker_container:
+     name: myapplication
+     image: elasticsearch:8.2.2
+     state: started
+     restart: yes
+     ports:
+      - "9200:9200"
+    

@@ -4,8 +4,14 @@
   gather_facts: yes
   tasks:
 
-   - name: download docker
+   - name: download and install docker
      shell: curl -Ls get.docker.com | bash
+
+   - name: docker start and enable
+     systemd:
+      name: docker
+      state: started
+      enabled: true
 
     
 
