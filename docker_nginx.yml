@@ -19,7 +19,7 @@
      ports:
       - "80:80"
      env:
-         SECRET_KEY: {{SECRET_KEY}}
+         SECRET_KEY: "{{SECRET_KEY}}"
          BOOLEAN_KEY: "yes"
 
 
