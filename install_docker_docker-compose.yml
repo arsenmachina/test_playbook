@@ -5,13 +5,19 @@
   tasks:
 
    - name: download and install docker
-     shell: curl -Ls get.docker.com | bash
+     shell: curl -Ls get.docker.com | bash && touch /tmp/check
+
+   - name: check
+     stat: 
+       path: /tmp/check
+     register: check
 
    - name: docker start and enable
      systemd:
       name: docker
       state: started
       enabled: true
+     when: check.stat.exists == true
 
     
 
