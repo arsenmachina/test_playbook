@@ -11,3 +11,6 @@
    
    - name: Install pip and SDK
      shell:  python2.7 ~/get-pip.py && pip2.7 install docker
+
+   - name: Install collection docker
+     shell:  ansible-galaxy collection install community.docker
