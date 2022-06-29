@@ -19,17 +19,9 @@
      ports:
       - "80:80"
      env:
-         SECRET_KEY: "w"
+         SECRET_KEY: {{SECRET_KEY}}
          BOOLEAN_KEY: "yes"
 
-  - name: Elasticsearch Asshole!
-    community.docker.docker_container:
-     name: elasticsearch_Asshole
-     image: elasticsearch:8.2.2
-     state: started
-     restart: yes
-     ports:
-      - "9200:9200"
 
 
 
