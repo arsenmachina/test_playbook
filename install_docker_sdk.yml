@@ -10,7 +10,7 @@
      register: check
 
    - debug: 
-     var: check
+       var: check
 
    - name: Install pip
      package:
