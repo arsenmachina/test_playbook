@@ -6,13 +6,13 @@
 
     ######   Debian key and repo   ######
    
-    - name: add GPG key for Debian
+    - name: add GPG key (Debian OS)
       apt_key:
         url: https://download.docker.com/linux/ubuntu/gpg
         state: present
       when: ansible_facts['os_family'] == "Debian"
 
-    - name: add docker repository to apt
+    - name: add docker repository to apt (Debian OS)
       apt_repository:
         repo: deb https://download.docker.com/linux/ubuntu bionic stable
         state: present
@@ -20,7 +20,7 @@
 
 ###########   RedHat utils and repo #######
 
-    - name: install a dependency
+    - name: install a dependency (RedHat OS)
       package:
         name: "{{item}}"
         state: present
@@ -29,7 +29,7 @@
         - yum-utils
       when: ansible_facts['os_family'] == "RedHat"
 
-    - name: Add Docker repo
+    - name: Add Docker repo (RedHat)
       get_url:
         url: https://download.docker.com/linux/centos/docker-ce.repo
         dest: /etc/yum.repos.d/docker-ce.repo
@@ -39,7 +39,7 @@
 ###### Start and install docker ############
 
 
-    - name: Install Docker on RedHat
+    - name: Install Docker
       package:
         name: docker-ce
         state: latest
