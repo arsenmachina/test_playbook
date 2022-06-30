@@ -4,12 +4,12 @@
   become_user: docker
   tasks:
 
-   - name: Download SDK
-     get_url:
-       url: https://bootstrap.pypa.io/pip/2.7/get-pip.py
-       dest: ~/get-pip.py
-   
-   - name: Install pip and SDK
-     shell:  python2.7 ~/get-pip.py && pip2.7 install docker
+   - name: install a dependency (RedHat OS)
+     package:
+       name: "{{item}}"
+       state: present
+       update_cache: yes
+     loop:
+       - python3-pip
 
    
