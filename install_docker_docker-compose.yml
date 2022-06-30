@@ -34,7 +34,7 @@
 
 
     - name: install docker
-      apt:
+      package:
         name: "{{item}}"
         state: latest
         update_cache: yes
