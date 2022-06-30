@@ -44,6 +44,37 @@
         - containerd.io
       when: ansible_facts['os_family'] == "Debian"
 
+
+###########   RED HAT OS #####
+
+    - name: install a dependency
+      yum:
+        name: "{{item}}"
+        state: present
+        update_cache: yes
+      loop:
+        - yum-utils
+      when: ansible_facts['os_family'] == "RedHat"
+
+
+    - name: Add Docker repo
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker-ce.repo
+      when: ansible_facts['os_family'] == "RedHat"
+
+    - name: Install Docker on RedHat
+      package:
+        name: docker-ce
+        state: latest
+      when: ansible_facts['os_family'] == "RedHat"  
+
+
+
+
+######START DOCKER #####
+
+
     - name: docker start and enable
       systemd:
         name: docker
