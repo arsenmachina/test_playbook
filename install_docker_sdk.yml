@@ -14,7 +14,8 @@
      pip:
         name: docker
         executable: pip3
-     become_user: docker
+        extra_args: --docker
+     
   
      
      
