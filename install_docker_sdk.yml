@@ -12,7 +12,9 @@
 
    - name: install pip docker 
      pip:
-        name: docker 
+        name: docker
+        executable: pip3
+     become_user: docker
   
      
      
