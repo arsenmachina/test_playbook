@@ -7,10 +7,10 @@
 
     - name: install a dependency
 
-      apt:
+      package:
         name: "{{item}}"
         state: present
-        update_cache: yes
+       
       loop:
         - apt-transport-https
         - ca-certificates
