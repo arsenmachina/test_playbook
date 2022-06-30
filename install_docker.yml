@@ -21,6 +21,12 @@
 
 ###########   RedHat utils and repo #######
 
+    - name: Enable EPEL Repository on CentOS 7
+      yum:
+        name: epel-release
+        state: latest
+      when: ansible_facts['os_family'] == 'RedHat' 
+
     - name: install a dependency (RedHat OS)
       package:
         name: "{{item}}"

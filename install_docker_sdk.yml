@@ -11,7 +11,7 @@
         state: present
         update_cache: yes
      loop:
-        - python
+        - python2
         - python-pip
 
    - name: install pip docker 
