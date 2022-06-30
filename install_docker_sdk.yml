@@ -1,7 +1,16 @@
 - name: Install docker SDK for python
   hosts: all
-  
+  become: yes
+  become_user: docker
   tasks:
+
+
+   - name: check
+     shell: whoami
+     register: check
+
+   - debug: 
+     var: check
 
    - name: Install pip
      package:
