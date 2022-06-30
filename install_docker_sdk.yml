@@ -1,16 +1,14 @@
 - name: Install docker SDK for python
   hosts: all
+  become: yes
+  become_user: docker
   tasks:
 
-   - name: install a dependency (RedHat OS)
+   - name: Install pip
      package:
-       name: "{{item}}"
-       state: present
-       update_cache: yes
-     loop:
-       - python3-pip
-     become: yes
-     become_user: docker
-     become_method: sudo 
+        name: python3-pip
+        state: latest
+   
+   
 
    
