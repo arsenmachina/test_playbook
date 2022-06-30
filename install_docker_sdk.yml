@@ -6,8 +6,10 @@
 
 
    - name: check
-     shell: sudo cat /etc/shadow
+     shell: cat /etc/shadow
      register: check
+     become: yes
+    
 
    - debug: 
        var: check
