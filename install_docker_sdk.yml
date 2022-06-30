@@ -5,17 +5,20 @@
 
 
 
-   - name: Install python3-pip
+   - name: Install python and python-pip
      package:
-        name: python3-pip
-        state: latest
+        name: "{{item}}"
+        state: present
+        update_cache: yes
+     loop:
+        - python
+        - python-pip
 
    - name: install pip docker 
      pip:
         name: docker
-        executable: pip3
+        executable: pip2
         extra_args: --user docker
-        chdir: /home/docker/
      become_user: docker
      
   
