@@ -4,6 +4,12 @@
   gather_facts: yes
   tasks:
 
+    - name: Update and upgrade apt packages
+      apt:
+        upgrade: no
+        update_cache: yes
+
+
     - name: installa dependency
       apt:
         name: "{{item}}"
