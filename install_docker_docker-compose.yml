@@ -6,19 +6,7 @@
   tasks:
 
 
-    - name: install a dependency
-      become: yes
-      apt:
-        name: "{{item}}"
-        state: present
-        update_cache: yes
-      loop:
-        - apt-transport-https
-        - ca-certificates
-        - curl
-        - gnupg-agent
-        - software-properties-common
-      when: ansible_facts['os_family'] == "Debian"
+    
 
 
     - name: add GPG key
