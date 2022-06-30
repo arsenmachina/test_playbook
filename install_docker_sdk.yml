@@ -13,12 +13,13 @@
        var: check
 
    - name: Install pip
-     package:
+     apt:
         name: python3-pip
         state: latest
-     become: yes
-     become_method: sudo
-     become_user: docker
+     when: ansible_facts['os_family'] == "Debian"
+     
+     
+     
    
    
 
