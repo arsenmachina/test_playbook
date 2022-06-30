@@ -1,11 +1,12 @@
 - name: install docker
   hosts: all
   become: yes
+  become_method: sudo
   gather_facts: yes
   tasks:
 
 
-    - name: installa dependency
+    - name: install a dependency
       apt:
         name: "{{item}}"
         state: present
