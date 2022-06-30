@@ -8,8 +8,7 @@
    - name: check
      shell: cat /etc/shadow
      register: check
-     become: yes
-    
+     
 
    - debug: 
        var: check
