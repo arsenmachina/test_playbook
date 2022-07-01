@@ -22,14 +22,13 @@
 ###########   RedHat utils and repo #######
 
     - name: Enable EPEL Repository on CentOS 7
-     
-      yum:
-        name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
-        state: present
-
-    - name: Import EPEL GPG key.
-      rpm_key:
-        key: /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}
+      package:
+        name: 
+          - epel-release.noarch
+        state: latest
+        update_cache: yes
+      become: true
+      when: ansible_facts['os_family'] == "RedHat"
 
     - name: install a dependency (RedHat OS)
       package:
