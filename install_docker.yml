@@ -22,12 +22,7 @@
 ###########   RedHat utils and repo #######
 
     - name: Enable EPEL Repository on CentOS 7
-      package:
-        name: 
-          - epel-release.noarch
-        state: latest
-        update_cache: yes
-      become: true
+      package: name=epel-release state=latest
       when: ansible_facts['os_family'] == "RedHat"
 
     - name: install a dependency (RedHat OS)
