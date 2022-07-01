@@ -23,7 +23,8 @@
 
     - name: Enable EPEL Repository on CentOS 7
       package:
-        name: epel-release
+        name: 
+          - epel-release
         state: latest
         update_cache: yes
       become: true
