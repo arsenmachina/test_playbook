@@ -7,17 +7,15 @@
 
    - name: Install python and python-pip
      package:
-        name: "{{item}}"
+        name:
+         - python3
         state: present
         update_cache: yes
-     loop:
-        - python2
-        - python-pip
 
    - name: install pip docker 
      pip:
         name: docker
-        executable: pip2
+        executable: pip3
         extra_args: --user docker
      become_user: docker
      
