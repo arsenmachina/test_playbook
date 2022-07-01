@@ -22,8 +22,8 @@
 ###########   RedHat utils and repo #######
 
     - name: Enable EPEL Repository on CentOS 7
-      yum:
-        name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+      package:
+        name: epel-release
         state: present
       when: ansible_facts['os_family'] == 'RedHat' 
 
@@ -34,6 +34,7 @@
         update_cache: yes
       loop:
         - yum-utils
+
       when: ansible_facts['os_family'] == "RedHat"
 
     - name: Add Docker repo (RedHat)
@@ -45,6 +46,15 @@
     
 ###### Start and install docker ############
 
+    - name: install software
+      package:
+        name:
+          - htop
+          - vim
+          - nmap
+          - yum-utils
+        state: present
+        update_cache: yes
 
     - name: Install Docker
       package:
