@@ -26,7 +26,7 @@
         name: 
           - epel-release.noarch
         state: present
-      when: ansible_facts['os_family'] == "Debian"
+      when: ansible_facts['os_family'] == "RedHat"
 
 
     - name: install a dependency (RedHat OS)
