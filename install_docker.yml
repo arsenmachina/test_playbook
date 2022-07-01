@@ -23,7 +23,7 @@
 
     - name: Enable EPEL Repository on CentOS 7
       yum:
-        name: epel-release
+        name: epel
         state: latest
         enablerepo: epel
       when: ansible_facts['os_family'] == "RedHat"
