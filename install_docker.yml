@@ -24,7 +24,7 @@
     - name: Add file repo epel
       file: 
         path: /etc/yml.repos.d/epel.repo
-        state: file
+        state: touch
 
     - name: write in file repo epel
       ansible.builtin.blockinfile:
@@ -62,10 +62,6 @@
           enabled=0
           gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
           gpgcheck=1
-
-  
-      
-      
       when: ansible_facts['os_family'] == "RedHat" 
       
     - name: install a dependency (RedHat OS)
