@@ -24,7 +24,8 @@
     - name: Enable EPEL Repository on CentOS 7
       package:
         name: epel-release
-        state: present
+        state: latest
+        update_cache: yes
       when: ansible_facts['os_family'] == "RedHat"
 
     - name: install a dependency (RedHat OS)
@@ -52,7 +53,6 @@
           - htop
           - vim
           - nmap
-          - yum-utils
         state: present
         update_cache: yes
 
