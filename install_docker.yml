@@ -27,10 +27,9 @@
         description: EPEL YUM repo
         file: external_repos
         baseurl: https://dl.fedoraproject.org/pub/epel/7/x86_64/
-        gpgcheck: no
+        gpgkey: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7
+      when: ansible_facts['os_family'] == "Debian"  
       
-
-
     - name: install a dependency (RedHat OS)
       package:
         name:
