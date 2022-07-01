@@ -26,7 +26,7 @@
         name: epel
         description: EPEL YUM repo
         file: external_repos
-        baseurl: https://dl.fedoraproject.org/pub/epel/7/x86_64/
+        baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
         gpgkey: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7
       when: ansible_facts['os_family'] == "RedHat"  
       
