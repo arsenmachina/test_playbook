@@ -12,7 +12,9 @@
         state: present
 
    - name: install module docker for python
-     shell: pip3 install docker --user
+     pip:
+        name: docker
+        executable: pip3
 
   #  - name: install pip docker 
   #    pip:
