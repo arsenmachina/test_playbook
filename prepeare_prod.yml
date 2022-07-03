@@ -113,12 +113,12 @@
         state: present
         update_cache: yes
 
-    - name: install pip docker 
+    - name: Install python module for docker
       pip:
         name: docker
         executable: pip3
-      state: present
-
+        state: present
+        
    
      
 
