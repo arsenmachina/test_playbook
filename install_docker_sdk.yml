@@ -16,7 +16,7 @@
      package:
         name: 
          - python2
-         - python2-pip-whl
+         - python2-pip
         state: present
      when: ansible_facts['os_family'] == "Debian"
 
