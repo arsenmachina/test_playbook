@@ -52,6 +52,7 @@
           - htop
           - vim
           - nmap
+          - acl
           - bash-completion
         state: present
         update_cache: yes
