@@ -9,8 +9,7 @@
      package:
         name:
          - python2
-         - python2-pip
-         - python2-pip-whl
+         - python2-pip*
         state: present
         update_cache: yes
 
