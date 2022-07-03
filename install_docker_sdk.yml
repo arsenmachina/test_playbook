@@ -8,17 +8,18 @@
    - name: Install python and python-pip
      package:
         name:
-         - python3
-         - python3-pip
+         - python2
+         - python2-pip
+         - python2-pip-whl
         state: present
         update_cache: yes
 
    - name: install pip docker 
      pip:
         name: docker
-        executable: pip3
+        executable: pip2
      vars:
-        ansible_python_interpreter: "/usr/bin/python3.6"
+        ansible_python_interpreter: "/usr/bin/python2"
      become_user: docker
      become: true
 
