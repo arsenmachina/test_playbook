@@ -1,15 +1,30 @@
 - name: Install docker SDK for python
   hosts: all
-  become: yes
-  become_user: docker
+  become: true
   tasks:
 
-   - name: Download SDK
-     get_url:
-       url: https://bootstrap.pypa.io/pip/2.7/get-pip.py
-       dest: ~/get-pip.py
+
+
+   - name: Install python and python-pip
+     package:
+        name:
+         - python3
+         - python3-pip
+        state: present
+        update_cache: yes
+
+   - name: install pip docker 
+     pip:
+        name: docker
+        executable: pip3
+        extra_args: --user docker
+     become_user: docker
+     
+  
+     
+     
+     
    
-   - name: Install pip and SDK
-     shell:  python2.7 ~/get-pip.py && pip2.7 install docker
+   
 
    

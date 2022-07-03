@@ -1,0 +1,75 @@
+- name: install docker
+  hosts: all
+  
+  become: yes
+  gather_facts: yes
+  tasks:
+
+    ######   Debian key and repo   ######
+   
+    - name: add GPG key (Debian OS)
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+      when: ansible_facts['os_family'] == "Debian"
+
+    - name: add docker repository to apt (Debian OS)
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu bionic stable
+        state: present
+      when: ansible_facts['os_family'] == "Debian"
+
+###########   RedHat utils and repo #######
+
+    - name: install epel-release
+      package:
+        name: 
+          - epel-release.noarch
+        state: present
+      when: ansible_facts['os_family'] == "RedHat"
+
+
+    - name: install a dependency (RedHat OS)
+      package:
+        name:
+          - yum-utils
+        state: present
+        update_cache: yes
+
+      when: ansible_facts['os_family'] == "RedHat"
+
+    - name: Add Docker repo (RedHat)
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker-ce.repo
+      when: ansible_facts['os_family'] == "RedHat"
+
+    
+###### Start and install docker ############
+
+    - name: install software
+      package:
+        name:
+          - htop
+          - vim
+          - nmap
+        state: present
+        update_cache: yes
+
+    - name: Install Docker
+      package:
+        name: docker-ce
+        state: latest
+
+    - name: Docker start and enable
+      systemd:
+        name: docker
+        state: started
+        enabled: true
+
+
+   
+     
+
+
+      

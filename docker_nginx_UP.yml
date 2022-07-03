@@ -13,7 +13,7 @@
   - name: Nginx Bitch!
     community.docker.docker_container:
      name: nginx_Bitch
-     image: nginx
+     image: nginx:latest
      state: started
      restart: yes
      ports:
