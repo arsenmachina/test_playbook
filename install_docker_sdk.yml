@@ -14,6 +14,7 @@
         update_cache: yes
 
    - name: install pip docker 
+     ansible_python_interpreter: /usr/bin/python3
      pip:
         name: docker
         executable: pip3
