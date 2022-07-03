@@ -1,0 +1,124 @@
+- name: install docker
+  hosts: all
+  
+  become: yes
+  gather_facts: yes
+  tasks:
+
+##################   Debian key and repo ###########################################
+   
+    - name: add GPG key (Debian OS)
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+      when: ansible_facts['os_family'] == "Debian"
+
+    - name: add docker repository to apt (Debian OS)
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu bionic stable
+        state: present
+      when: ansible_facts['os_family'] == "Debian"
+
+#################   RedHat utils and repo #########################################
+
+    - name: install epel-release
+      package:
+        name: 
+          - epel-release.noarch
+        state: present
+      when: ansible_facts['os_family'] == "RedHat"
+
+
+    - name: install a dependency (RedHat OS)
+      package:
+        name:
+          - yum-utils
+        state: present
+        update_cache: yes
+      when: ansible_facts['os_family'] == "RedHat"
+
+    - name: Add Docker repo (RedHat)
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker-ce.repo
+      when: ansible_facts['os_family'] == "RedHat"
+
+    
+################### Start and install docker #############################
+
+    - name: install software
+      package:
+        name:
+          - htop
+          - vim
+          - nmap
+          - bash-completion
+        state: present
+        update_cache: yes
+
+    - name: Install Docker
+      package:
+        name: docker-ce
+        state: latest
+
+    - name: Docker start and enable
+      systemd:
+        name: docker
+        state: started
+        enabled: true
+
+##################### Install docker-compose ###################################
+
+
+    - name: Install docker-compose from official github repo
+      get_url:
+        url : https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
+        dest: /usr/local/bin/docker-compose
+        mode: 'u=rx,g=rx,o=rx'
+
+
+###################### Create user docker and add group docker ################
+
+
+    - name: Add docker user
+      user:
+        name: docker
+        shell: /bin/bash
+        groups: docker
+
+
+    - name: Create sudo file
+      file:
+        path: /etc/sudoers.d/docker
+        state: touch
+
+    - name: Give docker user passwordless sudo
+      lineinfile:
+        path: /etc/sudoers.d/docker
+        state: present
+        line: 'docker ALL=(ALL:ALL) NOPASSWD: ALL'
+
+
+################# Install python and pip modules for docker #############################
+
+
+    - name: Install python and python-pip
+      package:
+        name:
+         - python3
+         - python3-pip
+        state: present
+        update_cache: yes
+
+    - name: install pip docker 
+      pip:
+        name: docker
+        executable: pip3
+        extra_args: --user docker
+      become_user: docker
+
+   
+     
+
+
+      
