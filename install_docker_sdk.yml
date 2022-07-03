@@ -4,14 +4,24 @@
   tasks:
 
 
-
-   - name: Install python and python-pip
+   - name: Pip install RedHat
      package:
-        name:
-         - python2
-         - python2-pip*
+        name: 
+           - python2
+           - python2-pip
         state: present
-        update_cache: yes
+     when: ansible_facts['os_family'] == "RedHat"
+
+   - name: Pip install Debian
+     package:
+        name: 
+         - python2
+         - python2-pip-whl
+        state: present
+     when: ansible_facts['os_family'] == "Debian"
+
+
+   
 
    - name: install pip docker 
      pip:
